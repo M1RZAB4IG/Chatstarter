@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+import { ConvexClientProvider } from "./convex-client-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,9 +12,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // children prompt will make sure anything that we wrap in this component will be rendered within it
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ConvexClientProvider>{children}</ConvexClientProvider>
+      </body>
     </html>
   );
 }
